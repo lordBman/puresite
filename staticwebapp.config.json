@@ -1,0 +1,30 @@
+{
+    "routes": [
+        {
+            "route": "/admin",
+            "allowedRoles": ["authenticated"]
+        },
+        {
+            "route": "/dashboard",
+            "redirect": "/admin"
+        },
+        {
+            "route": "/login",
+            "rewrite": "/.auth/login/aad"
+        },
+        {
+            "route": "/logout",
+            "rewrite": "/.auth/logout"
+        }
+    ],
+    "responseOverrides": {
+        "404": {
+            "rewrite": "/notfound",
+            "statusCode": 200
+        },
+        "401":{
+            "rewrite": "/unauth",
+            "statusCode": 200
+        }
+    }
+}
